@@ -1,0 +1,17 @@
+# Representação de um tabuleiro 10x10 no estado inicial.
+# A: Água (~)
+# B: Tiro errado (O)
+# C: Tiro certeiro (X)
+# D: Posição de navio (N) - Deve ser visível apenas para o proprietário do tabuleiro.
+
+  1 2 3 4 5 6 7 8 9 10
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
