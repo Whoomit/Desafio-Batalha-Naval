@@ -58,4 +58,13 @@ Para participar e contribuir com a sua solução:
 4.  Crie um **Pull Request (PR)** para este repositório com a sua solução.
     * No título do PR, inclua a linguagem utilizada (ex: `[Python] Implementação Básica do Jogo`).
     * Descreva no PR quais Desafios Extras você conseguiu implementar.
+  
+## 💾 Dados de Exemplo para Teste
+
+Para facilitar a implementação e os testes, forneço dois arquivos de dados:
+
+1.  **`TABULEIRO_VAZIO.txt`**: Estrutura de um tabuleiro $10 \times 10$ vazio.
+2.  **`FROTA_EXEMPLO.txt`**: Um arquivo com o posicionamento de uma frota completa. Ele pode ser usado para carregar o tabuleiro do oponente e testar a lógica de tiro (`Acerto`, `Erro`, `Afundou`).
+
+Sinta-se à vontade para usar, adaptar ou ignorar esses arquivos conforme a necessidade do seu projeto!
 
