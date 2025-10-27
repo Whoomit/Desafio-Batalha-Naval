@@ -1,0 +1,27 @@
+# Exemplo de posicionamento de uma frota no tabuleiro 10x10.
+# Formato: <Tipo do Navio>, <Posição Inicial Linha>, <Posição Inicial Coluna>, <Orientação (H/V)>
+
+# Navios (conforme as regras do README):
+# 1 Porta-Aviões (5 casas)
+# 1 Encouraçado (4 casas)
+# 2 Contratorpedeiro (3 casas)
+# 1 Submarino (2 casas)
+
+Porta-Aviões, A, 1, H      # Ocupa: A1, A2, A3, A4, A5
+Encouraçado, J, 7, H       # Ocupa: J7, J8, J9, J10
+Contratorpedeiro, D, 4, V  # Ocupa: D4, E4, F4
+Contratorpedeiro, H, 1, H  # Ocupa: H1, H2, H3
+Submarino, G, 9, V         # Ocupa: G9, H9
+
+# O tabuleiro real para esta frota seria (Navios marcados com 'N'):
+#   1 2 3 4 5 6 7 8 9 10
+# A N N N N N ~ ~ ~ ~ ~
+# B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+# C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+# D ~ ~ ~ N ~ ~ ~ ~ ~ ~
+# E ~ ~ ~ N ~ ~ ~ ~ ~ ~
+# F ~ ~ ~ N ~ ~ ~ ~ ~ ~
+# G ~ ~ ~ ~ ~ ~ ~ ~ N ~
+# H N N N ~ ~ ~ ~ ~ N ~
+# I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+# J ~ ~ ~ ~ ~ ~ N N N N
