@@ -1,0 +1,89 @@
+import random
+
+# --- Configurações do Jogo ---
+TAMANHO_TABULEIRO = 5
+NUMERO_DE_TURNOS = 4 # Número máximo de tentativas
+SIMBOLO_AGUA = "~"
+SIMBOLO_NAVIO = "N"
+SIMBOLO_ERRO = "O"
+SIMBOLO_ACERTO = "X"
+
+def criar_tabuleiro(tamanho):
+    """Cria um tabuleiro preenchido com água."""
+    tabuleiro = []
+    for _ in range(tamanho):
+        tabuleiro.append([SIMBOLO_AGUA] * tamanho)
+    return tabuleiro
+
+def imprimir_tabuleiro(tabuleiro, mostrar_navio=False):
+    """Imprime o tabuleiro no console."""
+    # Imprime os cabeçalhos das colunas
+    print("  " + " ".join(str(i) for i in range(len(tabuleiro))))
+    
+    # Imprime as linhas
+    for linha in range(len(tabuleiro)):
+        linha_a_imprimir = [tabuleiro[linha][coluna] if (tabuleiro[linha][coluna] != SIMBOLO_NAVIO or mostrar_navio) else SIMBOLO_AGUA for coluna in range(len(tabuleiro))]
+        print(f"{linha} " + " ".join(linha_a_imprimir))
+
+def posicionar_navio(tamanho):
+    """Posiciona um navio aleatoriamente (apenas 1 célula)."""
+    linha = random.randint(0, tamanho - 1)
+    coluna = random.randint(0, tamanho - 1)
+    return (linha, coluna)
+
+def jogar_batalha_naval():
+    """Função principal do jogo."""
+    
+    tabuleiro = criar_tabuleiro(TAMANHO_TABULEIRO)
+    navio_linha, navio_coluna = posicionar_navio(TAMANHO_TABULEIRO)
+    navio_afundado = False
+    
+    print("🚢 Bem-vindo à Batalha Naval! 🚢")
+    print(f"O tabuleiro tem {TAMANHO_TABULEIRO}x{TAMANHO_TABULEIRO}. Você tem {NUMERO_DE_TURNOS} turnos para afundar o navio.")
+    
+    # Você pode descomentar a linha abaixo para saber a localização do navio para testes
+    # print(f"Dica: O navio está em ({navio_linha}, {navio_coluna})")
+    
+    for turno in range(NUMERO_DE_TURNOS):
+        print(f"\n--- Turno {turno + 1}/{NUMERO_DE_TURNOS} ---")
+        imprimir_tabuleiro(tabuleiro)
+        
+        # Obter as coordenadas do jogador
+        while True:
+            try:
+                tiro_linha = int(input(f"Escolha a linha (0 a {TAMANHO_TABULEIRO - 1}): "))
+                tiro_coluna = int(input(f"Escolha a coluna (0 a {TAMANHO_TABULEIRO - 1}): "))
+                
+                if 0 <= tiro_linha < TAMANHO_TABULEIRO and 0 <= tiro_coluna < TAMANHO_TABULEIRO:
+                    break
+                else:
+                    print("Coordenadas inválidas. Tente novamente.")
+            except ValueError:
+                print("Entrada inválida. Digite um número.")
+        
+        # Verificar o resultado do tiro
+        if tiro_linha == navio_linha and tiro_coluna == navio_coluna:
+            print("💥 FOGO! Você afundou o navio inimigo!")
+            tabuleiro[tiro_linha][tiro_coluna] = SIMBOLO_ACERTO
+            imprimir_tabuleiro(tabuleiro, mostrar_navio=True)
+            navio_afundado = True
+            break
+        elif tabuleiro[tiro_linha][tiro_coluna] == SIMBOLO_ACERTO or tabuleiro[tiro_linha][tiro_coluna] == SIMBOLO_ERRO:
+            print("💦 Você já atirou neste local. Tente outro.")
+        else:
+            print("💧 ÁGUA! Você errou o alvo.")
+            tabuleiro[tiro_linha][tiro_coluna] = SIMBOLO_ERRO
+            
+    # Mensagem final
+    if navio_afundado:
+        print("\n🎉 PARABÉNS! Você VENCEU o jogo! 🎉")
+    else:
+        print("\nGame Over! Você ficou sem turnos.")
+        print(f"O navio estava em: ({navio_linha}, {navio_coluna})")
+        # Mostrar o navio no tabuleiro final
+        tabuleiro[navio_linha][navio_coluna] = SIMBOLO_NAVIO
+        imprimir_tabuleiro(tabuleiro, mostrar_navio=True)
+
+# Executar o jogo
+if __name__ == "__main__":
+    jogar_batalha_naval()
